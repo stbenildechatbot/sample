@@ -4,7 +4,7 @@ import requests
 import streamlit as st
 
 headers = {
-  "authorization": st.secrets["API_KEY"],
+  "authorization": st.secrets["auth_token"],
   "content-type": "application/json"
 }
 # Create the model
