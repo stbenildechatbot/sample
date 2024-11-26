@@ -1,11 +1,11 @@
 import os
 import google.generativeai as genai 
-from dotenv import load_dotenv
+import streamlit as st
 
-
-load_dotenv()
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-
+headers = {
+  "authorization": st.secrets["API_KEY"],
+  "content-type": "application/json"
+}
 # Create the model
 generation_config = {
   "temperature": 1,
