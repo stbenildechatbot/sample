@@ -1,5 +1,6 @@
 import os
-import google.generativeai as genai 
+import google.generativeai as genai
+import requests
 import streamlit as st
 
 headers = {
