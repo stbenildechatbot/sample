@@ -1,34 +1,30 @@
-import os
-import google.generativeai as genai
-import requests
 import streamlit as st
+import google.generativeai as genai
 
-
-  gemini_api_key = st.secrets["GEMINI_API_KEY"]
+# Set up your API key
+gemini_api_key = st.secrets["GEMINI_API_KEY"]
+genai.configure(api_key=gemini_api_key)
 
 # Create the model
-generation_config = {
-  "temperature": 1,
-  "top_p": 0.95,
-  "top_k": 40,
-  "max_output_tokens": 8192,
-  "response_mime_type": "text/plain",
-}
-
 model = genai.GenerativeModel(
-  model_name="gemini-1.5-flash",
-  generation_config=generation_config,
+    model_name="gemini-1.5-flash",
+    generation_config={
+        "temperature": 1,
+        "top_p": 0.95,
+        "top_k": 40,
+        "max_output_tokens": 8192,
+    }
 )
-def GenerateResponse(input_text):
-     response = model.generate_content([
-     "answer all questions as possible",
-     "input: who are you?",
-     "output: I'm the School Help Desk",
-     "input: what all you can do?",
-     "output: i can help by answering you inqueries",
-     f"input: {input_text}",
-     "output: ",
-     ])
-     return response.text
 
-
+def generate_response(input_text):
+    try:
+        response = model.generate_content([
+            "answer all questions as possible",
+            "input: who are you?",
+            "output: I'm the School Help Desk",
+            "input: what all you can do?",
+            "output: i can help by answering your inquiries",
+            f"input: {input_text}",
+            "output: ",
+        ])
+        return response.text
