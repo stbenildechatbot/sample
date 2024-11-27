@@ -80,7 +80,6 @@ def GenerateResponse(input_text):
      f"input: {input_text}",
      "output: ",
      ])
-
-        return response.text
+     return response.text
     except Exception as e:
         return f"An error occurred: {str(e)}"
