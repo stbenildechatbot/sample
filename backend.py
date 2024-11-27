@@ -28,3 +28,16 @@ def generate_response(input_text):
             "output: ",
         ])
         return response.text
+    except Exception as e:
+        return f"An error occurred: {str(e)}"
+
+# Streamlit UI
+st.title("School Help Desk")
+
+user_input = st.text_input("Ask a question:")
+if st.button("Get Answer"):
+    if user_input:
+        response = generate_response(user_input)
+        st.write(response)
+    else:
+        st.write("Please enter a question.")
