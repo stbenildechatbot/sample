@@ -1,8 +1,6 @@
 import streamlit as st
-import random
 import time
 import backend
-
 
 # Streamed response emulator
 def response_generator(prompt):
@@ -10,7 +8,6 @@ def response_generator(prompt):
     for word in response.split():
         yield word + " "
         time.sleep(0.05)
-
 
 st.title("BND CHATBOT")
 
