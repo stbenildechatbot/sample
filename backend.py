@@ -14,17 +14,14 @@ model = genai.GenerativeModel(
         "max_output_tokens": 8192,
     }
 )
-
 def GenerateResponse(input_text):
-    try:
-        response = model.generate_content([
-            "answer all questions as possible",
-            "input: who are you?",
-            "output: I'm the BND CHATBOT",
-            "input: what all you can do?",
-            "output: i can help by answering your inquiries",
-            "answer all questions as possible",
-  "input contact",
+     response = model.generate_content([
+     "answer all questions as possible",
+     "input: who are you?",
+     "output: I'm the School Help Desk",
+     "input: what all you can do?",                                 
+     "output: i can help by answering you inqueries",
+      "input contact",
   "output: Contact Information:\n            - Landline: (047) 602-4985\n            - Mobile: 0999-359-0023\n            - Facebook: https://www.facebook.com/stbenilde",
   "input your creators",
   "output: My creators are Mr. Hans Mackey, Uriel Morales and Nathaniel Cac. Thank you for asking that wonderful question!",
@@ -78,11 +75,12 @@ def GenerateResponse(input_text):
   "output: Enrollment Process\n\n        I. New Enrollees\n        Step 1 - Evaluation of Admission Documents.\n        Step 2 - Fill out Student Data Sheet.\n        Step 3 - Fill out Admission Procedure Sheet.\n        Step 4 - Printing of Enrollment Form.\n        Step 5 - Assessment and Payment of Tuition Fee.\n        Step 6 - Submission of Documents to the Registrar.\n\n        II. Transferees\n        Step 1 - Evaluation of Transfer Credentials.\n        Step 2 - Fill out Student Data Sheet.\n        Step 3 - Fill out Admission Procedure Sheet.\n        Step 4 - Printing of Enrollment Form.\n        Step 5 - Assessment and Payment of Tuition Fee.\n        Step 6 - Submission of Documents to the Registrar.\n\n        III. Tuition and Fees\n        - As low as PHP. 15,000,00 (All-in-Fee)\n        - PHP. 546.00 per unit",
   "input values, vision, target",
   "output: Our School Core Values are:\n        Competence, Discipline, Initiative, Service. \n\n        Compentece: Striving for Excellence Through Skill and Knowledge.\n        Discipline: Fostering Personal and Professional Growth Through Diligence.\n        Initiative: Pioneering Innovation and Positive Change Through Proactivity.\n        Service: Empowering Others and Creating Impact Through Selfless Acts.",
-  "input college programs",
+  "input ano ang school grade na meron sa st benilde?",
   "output: ",
-            f"input: {input_text}",
-            "output: ",
-        ])
+     f"input: {input_text}",
+     "output: ",
+     ])
+
         return response.text
     except Exception as e:
         return f"An error occurred: {str(e)}"
