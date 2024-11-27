@@ -3,10 +3,9 @@ import google.generativeai as genai
 import requests
 import streamlit as st
 
-headers = {
-  genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-  "content-type": "application/json"
-}
+
+  gemini_api_key = st.secrets["GEMINI_API_KEY"]
+
 # Create the model
 generation_config = {
   "temperature": 1,
