@@ -16,7 +16,7 @@ model = genai.GenerativeModel(
 )
 def GenerateResponse(input_text):
      response = model.generate_content([
-     "answer all questions as possible",
+     "answer all questions as much as possible ",
      "input: who are you?",
      "output: I'm the School Help Desk",
      "input: what all you can do?",                                 
