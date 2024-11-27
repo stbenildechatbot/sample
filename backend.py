@@ -4,7 +4,7 @@ import requests
 import streamlit as st
 
 headers = {
-  "authorization": st.secrets["auth_token"],
+  genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
   "content-type": "application/json"
 }
 # Create the model
