@@ -49,7 +49,7 @@ if st.session_state.messages and st.session_state.messages[-1]["role"] == "user"
 st.write("Recommended questions:")
 col1, col2 = st.columns(2)
 with col1:
-    st.button("What services do you offer?", on_click=ask_recommended_question, kwargs={"question": "What services do you offer?"})
+    st.button("What services do you offer?", on_click=ask_recommended_question, kwargs={"question": "What programs do you offer?"})
     st.button("How can I contact support?", on_click=ask_recommended_question, kwargs={"question": "How can I contact support?"})
 with col2:
     st.button("Tell me about your pricing", on_click=ask_recommended_question, kwargs={"question": "Tell me about your pricing"})
