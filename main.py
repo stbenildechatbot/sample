@@ -15,10 +15,9 @@ def response_generator(prompt):
     except Exception as e:
         yield f"An error occurred: {str(e)}"
 
-# Callback function for recommendation buttons
+# Callback for recommended question buttons
 def ask_recommended_question(question):
     st.session_state.messages.append({"role": "user", "content": question})
-    # This will trigger a rerun, and the prompt will be processed in the next run
 
 st.title("BND CHATBOT")
 
@@ -33,35 +32,22 @@ for message in st.session_state.messages:
 
 # Accept user input
 if prompt := st.chat_input("HI! I'm BND Chatbot, what is your question?"):
-    # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
-    # Display user message in chat message container
-    with st.chat_message("user"):
-        st.markdown(prompt)
-        
-# After displaying chat history
+
+# After displaying chat history and handling chat input,
+# check if the last message is from the user and generate a response
 if st.session_state.messages and st.session_state.messages[-1]["role"] == "user":
     prompt = st.session_state.messages[-1]["content"]
     with st.chat_message("assistant"):
         response = st.write_stream(response_generator(prompt))
     st.session_state.messages.append({"role": "assistant", "content": response})
 
-    # Display assistant response in chat message container
-    with st.chat_message("assistant"):
-        response = st.write_stream(response_generator(prompt))
-    # Add assistant response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": response})
-
 # Add recommended question buttons
 st.write("Recommended questions:")
 col1, col2 = st.columns(2)
 with col1:
-    st.button("What services do you offer?", on_click=ask_recommended_question, 
-              kwargs={"question": "What services do you offer?"})
-    st.button("How can I contact support?", on_click=ask_recommended_question, 
-              kwargs={"question": "How can I contact support?"})
+    st.button("What services do you offer?", on_click=ask_recommended_question, kwargs={"question": "What services do you offer?"})
+    st.button("How can I contact support?", on_click=ask_recommended_question, kwargs={"question": "How can I contact support?"})
 with col2:
-    st.button("Tell me about your pricing", on_click=ask_recommended_question, 
-              kwargs={"question": "Tell me about your pricing"})
-    st.button("What are your business hours?", on_click=ask_recommended_question, 
-              kwargs={"question": "What are your business hours?"})
+    st.button("Tell me about your pricing", on_click=ask_recommended_question, kwargs={"question": "Tell me about your pricing"})
+    st.button("What are your business hours?", on_click=ask_recommended_question, kwargs={"question": "What are your business hours?"})
