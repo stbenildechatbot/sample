@@ -38,6 +38,13 @@ if prompt := st.chat_input("HI! I'm BND Chatbot, what is your question?"):
     # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(prompt)
+        
+# After displaying chat history
+if st.session_state.messages and st.session_state.messages[-1]["role"] == "user":
+    prompt = st.session_state.messages[-1]["content"]
+    with st.chat_message("assistant"):
+        response = st.write_stream(response_generator(prompt))
+    st.session_state.messages.append({"role": "assistant", "content": response})
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
