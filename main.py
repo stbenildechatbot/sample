@@ -33,6 +33,9 @@ for message in st.session_state.messages:
 # Accept user input
 if prompt := st.chat_input("HI! I'm BND Chatbot, what is your question?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
+    # Display user message in chat message container
+    with st.chat_message("user"):
+        st.markdown(prompt)
 
 # After displaying chat history and handling chat input,
 # check if the last message is from the user and generate a response
