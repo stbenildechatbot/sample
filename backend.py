@@ -6,7 +6,7 @@ gemini_api_key = st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=gemini_api_key)
 
 model = genai.GenerativeModel(
-    model_name="gemini-1.5-flash",
+    model_name="gemini-2.5-flash",
     generation_config={
         "temperature": 1,
         "top_p": 0.95,
@@ -81,4 +81,5 @@ def GenerateResponse(input_text):
      "output: ",
      ])
      return response.text
+
 
